@@ -37,7 +37,10 @@ int main() {
 	std::cout << "Instruction at PC: 0x" << std::hex << thirdInstruction << std::endl;
 
 	cpu.Step();
-	std::cout << "r15 (sp?) after: " << std::dec << cpu.registers[13] << std::endl;
+	std::cout << "cpsr after MSR: 0x" << std::hex << cpu.cpsr << std::endl;
+
+	uint32_t fourthInstruction = bus.Read32(cpu.registers[15]);
+	std::cout << "Instruction at PC: 0x" << std::hex << fourthInstruction << std::endl;
 
 	return 0;
 }

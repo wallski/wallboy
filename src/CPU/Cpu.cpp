@@ -53,6 +53,9 @@ void Cpu::Step() {
 
             cpsr = (cpsr & ~mask) | (registers[rm] & mask);
         }
+        else if (opcode == 0b0010) {
+            registers[rd] = registers[rn] - immediate;
+        }
 
         registers[15] = registers[15] + 4;
     }
