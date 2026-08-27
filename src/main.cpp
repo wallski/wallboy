@@ -9,7 +9,9 @@ int main() {
 
 	std::string path;
 	std::cout << "Enter ROM path: ";
-	std::getline(std::cin, path);
+	//std::getline(std::cin, path);
+	std::cout << "Rom path auto set for testing";
+	path = "C:\\Users\\elias\\Downloads\\POKEMONLEAFGREEN\\PokemonLeafGreen.gba";
 
 	bus.LoadROM(path);
 
@@ -24,8 +26,18 @@ int main() {
 	cpu.Step();
 	std::cout << "PC after: 0x" << std::hex << cpu.registers[15] << std::endl;
 	
-	
 
+	uint32_t nextInstruction = bus.Read32(cpu.registers[15]);
+	std::cout << "Instruction at new PC: 0x:" << std::hex << nextInstruction << std::endl;
+	
+	cpu.Step();
+	std::cout << "r0 after MOV: " << std::dec << cpu.registers[0] << std::endl;
+
+	uint32_t thirdInstruction = bus.Read32(cpu.registers[15]);
+	std::cout << "Instruction at PC: 0x" << std::hex << thirdInstruction << std::endl;
+
+	cpu.Step();
+	std::cout << "r15 (sp?) after: " << std::dec << cpu.registers[13] << std::endl;
 
 	return 0;
 }

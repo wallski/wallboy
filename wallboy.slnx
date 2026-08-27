@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="wallboy.vcxproj" />
+  <Project Path="wallboy.vcxproj" Id="31a43908-3328-4896-b58e-b1786178e1bd" />
 </Solution>
